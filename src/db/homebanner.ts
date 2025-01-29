@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 const HomebannerSchema = new mongoose.Schema({
     imageUrl: { type: String, required: true},
     description: { type: String, required: true},
+    descriptions: { type: String, required: true},
     size: { type: String},
     features: { type: String},
     estate_id: { type: String, required:true},
     property_name: { type: String},
     nav_id: { type: String, required: true},
+    type: { type: String},
     createdAt: {
         type: Date,
         default: Date.now

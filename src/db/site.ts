@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 
 const SiteSchema = new mongoose.Schema({
-    header: { type: String, required:true},
+    header: { type: String},
     description: { type: String},
     imageUrl: { type: String},
     property_location: { type: String},
