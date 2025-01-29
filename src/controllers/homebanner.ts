@@ -20,7 +20,7 @@ export const getRecent = async (req: Request, res: Response): Promise<any> => {
 export const createBanner = async (req: Request, res: Response): Promise<any> => {
     try {
     
-        const { description,descriptions, size, features, nav_id,type, estate_id,property_name } = req.body;
+        const { description, size, features, nav_id,estate_id,property_name } = req.body;
         const file = req.file;
 
         
@@ -36,9 +36,9 @@ export const createBanner = async (req: Request, res: Response): Promise<any> =>
         
         const bannerData = {
             description,
-            descriptions,
+            
             size,
-            type,
+            
             property_name,
             features,
             estate_id,
