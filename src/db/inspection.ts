@@ -18,10 +18,10 @@ export const InspectionModel = mongoose.model('Inspections', InspectionSchema);
 
 export const getInspection = () => 
     InspectionModel.find()
-    .populate('location_id') 
-    .populate('property_id') 
-    .populate('inquiry_id') 
-    .populate('information_id');
+    .populate('location_id, locations') 
+    .populate('property_id, properties') 
+    .populate('inquiry_id, inquiries') 
+    .populate('information_id, information');
 
 
     export const createInspection = (values: Record<string, any>) => 
