@@ -3,16 +3,15 @@ import { getInspection, createInspection } from '../db/inspection'
 
 
 
-export const getAllInspections = async (req: Request, res: Response): Promise<any> => {
+export const getAllInspections = async (req:Request, res: Response) : Promise<any> => {
     try {
-        const inspections = await getInspection();
-        return res.status(200).json({ success: true, data: inspections });
-    } catch (error) {
+        const inspection = await getInspection();
+        return res.status(200).json({success: true, data: inspection})
+    }catch(error){
         console.error(error);
-        return res.status(500).json({ error: "Internal server error" });
+        return res.status(500).json({ errror: "Internal server error"})
     }
 };
-
 
 
 

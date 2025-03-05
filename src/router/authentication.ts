@@ -57,6 +57,5 @@ export default (router: express.Router) => {
     router.post('/property', property)
     router.post('/inspections', inspections)
     router.post('/info', info)
-    // router.post('/auth/login', login);
-    // router.post('/projects', projects);
+    
 }

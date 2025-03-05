@@ -16,14 +16,6 @@ const InspectionSchema = new mongoose.Schema({
 export const InspectionModel = mongoose.model('Inspections', InspectionSchema);
 
 
-export const getInspection = () => 
-    InspectionModel.find()
-    .populate('location_id, locations') 
-    .populate('property_id, properties') 
-    .populate('inquiry_id, inquiries') 
-    .populate('information_id, information');
-
-
-    export const createInspection = (values: Record<string, any>) => 
-        new InspectionModel(values).save().then((inspection) => inspection.toObject());
-    
+export const getInspection = () => InspectionModel.find();
+export const createInspection = (values: Record<string, any>) => 
+    new InspectionModel(values).save().then((inspection) => inspection.toObject());
