@@ -20,7 +20,7 @@ export const getRecent = async (req: Request, res: Response): Promise<any> => {
 export const createBanner = async (req: Request, res: Response): Promise<any> => {
     try {
     
-        const { description, size, features, nav_id,estate_id,property_name } = req.body;
+        const { description, size, features, estate_id,property_name } = req.body;
         const file = req.file;
 
         
@@ -42,7 +42,7 @@ export const createBanner = async (req: Request, res: Response): Promise<any> =>
             property_name,
             features,
             estate_id,
-            nav_id,
+            // nav_id,
             imageUrl: uploadResult.secure_url, 
             createdAt: new Date(),
         };

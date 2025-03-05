@@ -3,13 +3,12 @@ import mongoose from "mongoose";
 const HomebannerSchema = new mongoose.Schema({
     imageUrl: { type: String, required: true},
     description: { type: String, required: true},
-    // descriptions: { type: String, required: true},
+    link: { type: String},
     size: { type: String},
     features: { type: String},
     estate_id: { type: String, required:true},
     property_name: { type: String},
-    nav_id: { type: String, required: true},
-    // type: { type: String},
+    nav_id: { type: String},
     createdAt: {
         type: Date,
         default: Date.now
@@ -24,7 +23,7 @@ export const getHome = async (options: { sort?: Record<string, any>; limit?: num
     return HomebannerModel.find().sort(sort).limit(limit);
 };
 export const getHomebannerByEstateId = (estate_id: string) => 
-    HomebannerModel.find({ estate_id }).sort({ createdAt: -1 }); // Sort by createdAt if needed
+    HomebannerModel.find({ estate_id }).sort({ createdAt: -1 }); 
 
 export const getHomebannersByNavId = (nav_id: string) => HomebannerModel.find({ nav_id}).sort({ createdAt: -1});
 export const getHomebannerById = (id: string) => HomebannerModel.findById(id);
