@@ -14,7 +14,7 @@ const app = express();
 
 // ✅ Proper CORS Configuration
 app.use(cors({
-    origin: ["http://localhost:8080", "https://vidash-backend.onrender.com"], // Allow frontend
+    origin: ["http://localhost:8080", "https://www.vidashcityshelters.com.ng"], // Allow frontend
     credentials: true,
     methods: "GET, POST, PUT, DELETE, OPTIONS",
     allowedHeaders: "Content-Type, Authorization",
