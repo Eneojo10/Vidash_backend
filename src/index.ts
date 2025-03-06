@@ -13,12 +13,17 @@ dotenv.config();
 const app = express();
 
 // ✅ Proper CORS Configuration
+const allowedOrigins = process.env.MODE === "PROD"
+    ? ["https://www.vidashcityshelters.com.ng"]
+    : ["http://localhost:5173", "https://www.vidashcityshelters.com.ng"];
+
 app.use(cors({
-    origin: ["http://localhost:8080", "https://www.vidashcityshelters.com.ng"], // Allow frontend
+    origin: allowedOrigins,
     credentials: true,
     methods: "GET, POST, PUT, DELETE, OPTIONS",
     allowedHeaders: "Content-Type, Authorization",
 }));
+
 
 app.use(compression());
 app.use(cookieParser());
