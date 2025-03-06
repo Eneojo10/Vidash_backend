@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:8080"], 
+    origin: ["http://localhost:5173", "http://localhost:8080", "https://www.vidashcityshelters.com.ng"], 
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
