@@ -12,8 +12,12 @@ dotenv.config();
 
 const app = express();
 
+// ✅ Proper CORS Configuration
 app.use(cors({
+    origin: ["http://localhost:5173", "https://your-frontend-url.com"], // Allow frontend
     credentials: true,
+    methods: "GET, POST, PUT, DELETE, OPTIONS",
+    allowedHeaders: "Content-Type, Authorization",
 }));
 
 app.use(compression());
@@ -33,8 +37,7 @@ const DATABASE_URL =
         ? process.env.ONLINE_URL
         : process.env.LOCAL_URL;
 console.log('MODE:', process.env.MODE);
-console.log('DATABASE_URL:', process.env.MODE === 'PROD' ? process.env.ONLINE_URL : process.env.LOCAL_URL);
-
+console.log('DATABASE_URL:', DATABASE_URL);
 
 mongoose.Promise = Promise;
 
@@ -42,6 +45,5 @@ mongoose.Promise = Promise;
 mongoose.connect(DATABASE_URL as string)
     .then(() => console.log('Connected to MongoDB'))
     .catch((error) => console.error('MongoDB connection error:', error));
-
 
 app.use('/', router());
