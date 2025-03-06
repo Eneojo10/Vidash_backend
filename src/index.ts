@@ -13,11 +13,12 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:8080", // Allow frontend to access the backend
-    credentials: true,  // Allow cookies and authentication headers
-    methods: "GET,POST,PUT,DELETE", // Specify allowed request methods
-    allowedHeaders: "Content-Type,Authorization", // Allow specific headers
+    origin: ["http://localhost:5173", "http://localhost:8080"], // Allow both ports
+    credentials: true,
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
 }));
+
 
 app.use(compression());
 app.use(cookieParser());
