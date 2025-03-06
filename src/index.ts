@@ -12,18 +12,12 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Proper CORS Configuration
-const allowedOrigins = process.env.MODE === "PROD"
-    ? ["https://www.vidashcityshelters.com.ng"]
-    : ["http://localhost:8080", "https://www.vidashcityshelters.com.ng"];
-
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true,
-    methods: "GET, POST, PUT, DELETE, OPTIONS",
-    allowedHeaders: "Content-Type, Authorization",
+    origin: "http://localhost:8080", // Allow frontend to access the backend
+    credentials: true,  // Allow cookies and authentication headers
+    methods: "GET,POST,PUT,DELETE", // Specify allowed request methods
+    allowedHeaders: "Content-Type,Authorization", // Allow specific headers
 }));
-
 
 app.use(compression());
 app.use(cookieParser());
@@ -42,7 +36,8 @@ const DATABASE_URL =
         ? process.env.ONLINE_URL
         : process.env.LOCAL_URL;
 console.log('MODE:', process.env.MODE);
-console.log('DATABASE_URL:', DATABASE_URL);
+console.log('DATABASE_URL:', process.env.MODE === 'PROD' ? process.env.ONLINE_URL : process.env.LOCAL_URL);
+
 
 mongoose.Promise = Promise;
 
@@ -50,5 +45,6 @@ mongoose.Promise = Promise;
 mongoose.connect(DATABASE_URL as string)
     .then(() => console.log('Connected to MongoDB'))
     .catch((error) => console.error('MongoDB connection error:', error));
+
 
 app.use('/', router());
