@@ -19,3 +19,5 @@ export const InspectionModel = mongoose.model('Inspections', InspectionSchema);
 export const getInspection = () => InspectionModel.find();
 export const createInspection = (values: Record<string, any>) => 
     new InspectionModel(values).save().then((inspection) => inspection.toObject());
+
+export const getTotalInspection = () => InspectionModel.countDocuments();

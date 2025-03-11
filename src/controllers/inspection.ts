@@ -1,5 +1,5 @@
 import { Response, Request} from 'express'
-import { getInspection, createInspection } from '../db/inspection'
+import { getInspection, createInspection, getTotalInspection} from '../db/inspection'
 
 
 
@@ -14,6 +14,16 @@ export const getAllInspections = async (req:Request, res: Response) : Promise<an
 };
 
 
+
+export const getTotalInspectionCount = async (req: Request, res: Response): Promise<any> => {
+    try {
+        const total = await getTotalInspection();
+        return res.status(200).json({ success: true, total });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+};
 
 export const inspections = async (req: Request, res:Response) : Promise<any> => {
     try {

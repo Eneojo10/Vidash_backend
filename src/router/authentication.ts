@@ -11,7 +11,7 @@ import { getBannersByEstateId, getBannerById } from '../controllers/homebanner';
 import { inquiries, getAllInquiries } from '../controllers/inquiry';
 import { locations, getAllLocations} from '../controllers/location';
 import { property, getAllProperties} from '../controllers/property';
-import { inspections, getAllInspections } from '../controllers/inspection';
+import { inspections, getAllInspections, getTotalInspectionCount } from '../controllers/inspection';
 import { info, getAllInfo } from '../controllers/information';
 import { getAllTours, tours } from '../controllers/tour';
 import { getAllSchedule, schedules } from '../controllers/schedule';
@@ -24,6 +24,7 @@ import upload from '../middleware/multer'
 
 export default (router: express.Router) => {
     router.get('/getAllEstates', getAllEstates)
+    router.get('/getTotalInspectionCount', getTotalInspectionCount)
     router.get('/getTotalEstatesCount', getTotalEstatesCount)
     router.get('/getAllNavs', getAllNavs)
     router.get('/getRecent', getRecent)
