@@ -1,5 +1,6 @@
 import { Response, Request} from 'express';
 import { getEstates, getEstateById, createEstate, deleteEstateById, updateEstateById } from '../db/estates';
+import { getTotalEstates} from '../db/estates'
 
 
 
@@ -7,6 +8,17 @@ export const getAllEstates = async (req: Request, res: Response): Promise<any> =
     try {
         const estates = await getEstates(); 
         return res.status(200).json({ success: true, data: estates });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+
+export const getTotalEstatesCount = async (req: Request, res: Response): Promise<any> => {
+    try {
+        const total = await getTotalEstates();
+        return res.status(200).json({ success: true, total });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Internal server error" });

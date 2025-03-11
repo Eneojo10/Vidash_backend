@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { register } from '../controllers/authentication';
-import { estates,getAllEstates } from '../controllers/estates'
+import { estates,getAllEstates, getTotalEstatesCount } from '../controllers/estates'
 import {navigations,getAllNavs } from '../controllers/nav'
 import { getRecent } from '../controllers/homebanner';
 import { createBanner } from '../controllers/homebanner';
@@ -24,6 +24,7 @@ import upload from '../middleware/multer'
 
 export default (router: express.Router) => {
     router.get('/getAllEstates', getAllEstates)
+    router.get('/getTotalEstatesCount', getTotalEstatesCount)
     router.get('/getAllNavs', getAllNavs)
     router.get('/getRecent', getRecent)
     router.get('/getAllContact', getAllContact)

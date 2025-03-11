@@ -15,3 +15,5 @@ export const createEstate = (values: Record<string, any>) =>
 export const deleteEstateById = (id: string) => EstateModel.findOneAndDelete({ _id: id});
 export const updateEstateById = (id: string, values: Record<string, any>) =>
     EstateModel.findByIdAndUpdate(id, values, { new: true});
+
+export const getTotalEstates = () => EstateModel.countDocuments();
