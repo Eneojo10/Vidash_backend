@@ -3,13 +3,13 @@ import mongoose from 'mongoose'
 
 
 const InspectionSchema = new mongoose.Schema({
-    firstname: { type: String, required:true},
-    lastname: { type: String, required: true},
+    firstname: { type: String, required: true },
+    lastname: { type: String, required: true },
     email: { type: String, required: true, trim: true, match: /.+\@.+\..+/ },
-    location_id: { type: String},
-    property_id: { type: String},
-    inquiry_id: { type: String},
-    information_id: { type: String},
+    location_id: { type: mongoose.Schema.Types.ObjectId, ref: 'location' },  // Reference to Location collection
+    property_id: { type: mongoose.Schema.Types.ObjectId, ref: 'properties' },  // Reference to Property collection
+    inquiry_id: { type: mongoose.Schema.Types.ObjectId, ref: 'inquiry' },    // Reference to Inquiry collection
+    information_id: { type: mongoose.Schema.Types.ObjectId, ref: 'information' } // Reference to Information collection
 });
 
 

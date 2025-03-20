@@ -13,7 +13,7 @@ import { locations, getAllLocations} from '../controllers/location';
 import { property, getAllProperties} from '../controllers/property';
 import { inspections, getAllInspections, getTotalInspectionCount } from '../controllers/inspection';
 import { info, getAllInfo } from '../controllers/information';
-import { getAllTours, tours } from '../controllers/tour';
+import { getAllTours, tours, getTotalTourCount } from '../controllers/tour';
 import { getAllSchedule, schedules } from '../controllers/schedule';
 import { time, getAllTime } from '../controllers/time';
 import { getAllAreas, createAreas } from '../controllers/area'
@@ -26,6 +26,7 @@ export default (router: express.Router) => {
     router.get('/getAllEstates', getAllEstates)
     router.get('/getTotalInspectionCount', getTotalInspectionCount)
     router.get('/getTotalEstatesCount', getTotalEstatesCount)
+    router.get('/getTotalTourCount', getTotalTourCount)
     router.get('/getAllNavs', getAllNavs)
     router.get('/getRecent', getRecent)
     router.get('/getAllContact', getAllContact)

@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { getTour, createTour } from "../db/tour";
+import { getTour, createTour, getTotalTour } from "../db/tour";
 
 
 export const getAllTours = async (req: Request, res: Response) : Promise<any> => {
@@ -13,6 +13,16 @@ export const getAllTours = async (req: Request, res: Response) : Promise<any> =>
     }
 };
 
+
+export const getTotalTourCount = async (req: Request, res: Response) : Promise<any> => {
+    try {
+        const total = await getTotalTour();
+        return res.status(200).json({ success: true, total});
+    }catch(error) {
+        console.error(error);
+        return res.status(500).json({ error: "Internal server error"});
+    }
+}
 
 
 export const tours = async (req: Request, res: Response) : Promise<any> => {
